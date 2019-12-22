@@ -6,13 +6,13 @@ This fork of a fork of clj-http-lite is usable with [Babashka](https://github.co
 
 You can obtain it as a git dep using the `clojure` tool. Put this in your `deps.edn`:
 
-```
+``` clojure
 {:deps {clj-http-lite {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}
 ```
 
 or use any later SHA. And then use the library with Babashka as follows:
 
-```
+``` clojure
 $ bb --classpath "$(clojure -Spath)" "(require '[clj-http.lite.client :as client]) (:status (client/get \"https://www.clojure.org\"))"
 200
 ```
