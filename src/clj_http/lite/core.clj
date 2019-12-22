@@ -4,6 +4,8 @@
   (:import (java.io ByteArrayOutputStream InputStream)
            (java.net URL HttpURLConnection)))
 
+(set! *warn-on-reflection* true)
+
 (defn parse-headers
   "Takes a URLConnection and returns a map of names to values.
 
@@ -53,7 +55,7 @@
                       (when server-port (str ":" server-port))
                       uri
                       (when query-string (str "?" query-string)))
-        conn (.openConnection ^URL (URL. http-url))]
+        conn ^HttpURLConnection (.openConnection ^URL (URL. http-url))]
     (when (and content-type character-encoding)
       (.setRequestProperty conn "Content-Type" (str content-type
                                                     "; charset="
@@ -63,8 +65,8 @@
     (doseq [[h v] headers]
       (.setRequestProperty conn h v))
     (when (false? follow-redirects)
-      (.setInstanceFollowRedirects ^HttpURLConnection conn false))
-    (.setRequestMethod ^HttpURLConnection conn (.toUpperCase (name request-method)))
+      (.setInstanceFollowRedirects conn false))
+    (.setRequestMethod conn (.toUpperCase (name request-method)))
     (when body
       (.setDoOutput conn true))
     (when socket-timeout
