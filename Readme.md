@@ -1,5 +1,24 @@
 # `clj-http-lite` [![cljdoc badge](https://cljdoc.xyz/badge/org.martinklepsch/clj-http-lite)](https://cljdoc.xyz/d/org.martinklepsch/clj-http-lite/CURRENT) [![CI](https://github.com/martinklepsch/clj-http-lite/workflows/Tests/badge.svg)](https://github.com/martinklepsch/clj-http-lite/actions)
 
+## Babashka
+
+This fork of a fork of clj-http-lite is usable with [Babashka](https://github.com/borkdude/babashka/). You will need Babashka v0.0.47 or later.
+
+You can obtain it as a git dep using the clojure tool. Put this in your `deps.edn`:
+
+```
+{:deps {clj-http-lite {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}
+```
+
+or use any later SHA. And then use the library with Babashka as follows:
+
+```
+$ bb --classpath "$(clojure -Spath)" "(require '[clj-http.lite.client :as client]) (:status (client/get \"https://www.clojure.org\"))"
+200
+```
+
+What follows is the unchanged README of the fork.
+
 A Clojure HTTP library similar to [clj-http](http://github.com/dakrone/clj-http), but more lightweight. Compatible with GraalVM.
 
 > This is a somewhat maintained fork of the original [`hiredman/clj-http-lite`](https://github.com/hiredman/clj-http-lite) repo.
