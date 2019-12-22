@@ -1,6 +1,6 @@
 # `clj-http-lite` [![cljdoc badge](https://cljdoc.xyz/badge/org.martinklepsch/clj-http-lite)](https://cljdoc.xyz/d/org.martinklepsch/clj-http-lite/CURRENT) [![CI](https://github.com/martinklepsch/clj-http-lite/workflows/Tests/badge.svg)](https://github.com/martinklepsch/clj-http-lite/actions)
 
-## Babashka
+## Babashka support (EXPERIMENTAL!)
 
 This fork of a fork of clj-http-lite is usable with [Babashka](https://github.com/borkdude/babashka/). You will need Babashka v0.0.47 or later.
 
