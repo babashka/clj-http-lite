@@ -1,14 +1,14 @@
 (ns clj-http.lite.client
   "Batteries-included HTTP client."
-  (:use [slingshot.slingshot :only [throw+]])
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
             [clj-http.lite.core :as core]
             [clj-http.lite.links :refer [wrap-links]]
             [clj-http.lite.util :as util])
-  (:import (java.io InputStream File)
-           (java.net URL UnknownHostException))
+  (:import [java.net UnknownHostException])
   (:refer-clojure :exclude (get update)))
+
+(set! *warn-on-reflection* true)
 
 (defn update [m k f & args]
   (assoc m k (apply f (m k) args)))
@@ -34,7 +34,7 @@
       (if (or (not (clojure.core/get req :throw-exceptions true))
               (unexceptional-status? status))
         resp
-        (throw+ resp "clj-http: status %s" (:status %))))))
+        (throw (Exception. (format "clj-http: status %s" (:status resp))))))))
 
 (declare wrap-redirects)
 
@@ -73,7 +73,7 @@
       (if body
         (cond
          (keyword? as)
-         (condp = as
+         (case as
            ;; Don't do anything for streams
            :stream resp
            ;; Don't do anything when it's a byte-array

@@ -25,3 +25,4 @@ aws.clj
 *.pyc
 .lein-failures
 /.lein-deps-sum
+/.lein-repl-history

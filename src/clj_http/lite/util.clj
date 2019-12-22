@@ -6,6 +6,8 @@
            (java.util.zip InflaterInputStream DeflaterInputStream
                           GZIPInputStream GZIPOutputStream)))
 
+(set! *warn-on-reflection* true)
+
 (defn utf8-bytes
   "Returns the UTF-8 bytes corresponding to the given string."
   [#^String s]
@@ -31,12 +33,7 @@
 (defmacro base64-encode
   "Encode an array of bytes into a base64 encoded string."
   [unencoded]
-  (if (try (import 'javax.xml.bind.DatatypeConverter)
-           (catch ClassNotFoundException _))
-    `(javax.xml.bind.DatatypeConverter/printBase64Binary ~unencoded)
-    (do
-      (import 'java.util.Base64)
-      `(.encodeToString (java.util.Base64/getEncoder) ~unencoded))))
+  `(.encodeToString (java.util.Base64/getEncoder) ~unencoded))
 
 (defn to-byte-array
   "Returns a byte array for the InputStream provided."
