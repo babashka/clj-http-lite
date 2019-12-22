@@ -1,8 +1,8 @@
 (ns clj-http.lite.core
   "Core HTTP request/response implementation."
   (:require [clojure.java.io :as io])
-  (:import (java.io ByteArrayOutputStream InputStream IOException)
-           (java.net URI URL HttpURLConnection)))
+  (:import (java.io ByteArrayOutputStream InputStream)
+           (java.net URL HttpURLConnection)))
 
 (defn parse-headers
   "Takes a URLConnection and returns a map of names to values.

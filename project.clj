@@ -4,8 +4,7 @@
   :warn-on-reflection false
   :license {:name "MIT"
             :url "http://www.opensource.org/licenses/mit-license.php"}
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [slingshot "0.12.2"]]
+  :dependencies [[org.clojure/clojure "1.8.0"]]
   :profiles {:dev {:dependencies [[ring/ring-jetty-adapter "1.3.2"]
                                   [ring/ring-devel "1.3.2"]]}
              :1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}

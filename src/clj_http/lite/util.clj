@@ -31,12 +31,7 @@
 (defmacro base64-encode
   "Encode an array of bytes into a base64 encoded string."
   [unencoded]
-  (if (try (import 'javax.xml.bind.DatatypeConverter)
-           (catch ClassNotFoundException _))
-    `(javax.xml.bind.DatatypeConverter/printBase64Binary ~unencoded)
-    (do
-      (import 'java.util.Base64)
-      `(.encodeToString (java.util.Base64/getEncoder) ~unencoded))))
+  `(.encodeToString (java.util.Base64/getEncoder) ~unencoded))
 
 (defn to-byte-array
   "Returns a byte array for the InputStream provided."
