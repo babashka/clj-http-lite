@@ -4,7 +4,7 @@
 
 This fork of a fork of clj-http-lite is usable with [Babashka](https://github.com/borkdude/babashka/). You will need Babashka v0.0.47 or later.
 
-You can obtain it as a git dep using the clojure tool. Put this in your `deps.edn`:
+You can obtain it as a git dep using the `clojure` tool. Put this in your `deps.edn`:
 
 ```
 {:deps {clj-http-lite {:git/url "https://github.com/borkdude/clj-http-lite" :sha "f44ebe45446f0f44f2b73761d102af3da6d0a13e"}}}
